@@ -23,9 +23,9 @@ const books = [
   {
     id: 3,
     image:
-      "https://images-na.ssl-images-amazon.com/images/I/81WUAoL-wFL._AC_UL200_SR200,200_.jpg",
-    title: "Lord of the Flies",
-    author: "William Golding",
+      "https://images-na.ssl-images-amazon.com/images/I/81MgsNre3IL._AC_UL200_SR200,200_.jpg",
+    title: "The Wish",
+    author: "Nicholas Sparks",
   },
 ];
 
@@ -45,11 +45,33 @@ const Book = ({ image, title, author } = {}) => {
   // console.log(props);
 
   // const { image, title, author } = props;
+
+  const clickHandler = (e) => {
+    console.log(e);
+    console.log(e.target);
+    alert("Boop");
+  };
+
+  const complexHandler = (author) => {
+    console.log(author);
+  };
   return (
-    <article className="book">
+    <article
+      className="book"
+      onMouseOver={() => {
+        console.log(title);
+      }}
+    >
       <img src={image} alt="I love you to the moon and back" />
-      <h1>{title}</h1>
+      <h1 onClick={() => console.log(title)}>{title}</h1>
       <h4>{author}</h4>
+      <button type="button" onClick={clickHandler}>
+        Reference example
+      </button>
+      <br></br>
+      <button type="button" onClick={() => complexHandler(author)}>
+        More complex example
+      </button>
     </article>
   );
 };
